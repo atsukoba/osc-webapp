@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AEAA,AAAA,IAAI,CAAC;EACD,OAAO,EAAE,SAAS;CACrB",
+    "sources": [
+        "../scss/style.scss",
+        "../scss/_reset.scss",
+        "../scss/_basic.scss",
+        "../scss/_layouts.scss"
+    ],
+    "names": [],
+    "file": "style.css"
+}

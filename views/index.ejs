@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OSC app</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+    <link rel="stylesheet" href="/stylesheets/css/style.css">
+  </head>
+  <body>
+    <h1>OSC app</h1>
+    <form id="osc_form" action="#">
+      <p>
+        <span>address:</span>
+        <input id="osc_address" autocomplete="off" placeholder="/address" required/>
+      </p>
+      <p>
+        <span>msg:</span>
+        <input id="osc_msg" autocomplete="off" placeholder="message value" required/>
+      </p>
+      <button type="submit">Send</button>
+    </form>
+    <hr>
+    <form id="message_form" action="#">
+      Message to Server
+      <input id="input_msg" autocomplete="off" required/>
+      <button type="submit">Send</button>
+    </form>
+    <hr>
+    <ul id="messages">
+      <h3>Messages</h3>
+    </ul>
+    <script src="/javascripts/main.js"></script>
+    <span>v0.01 Atsuya Kobayashi</span>
+  </body>
+</html>
