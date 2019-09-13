@@ -25,7 +25,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// routing
 app.use('/', indexRouter);
+app.use('/demo', indexRouter);
 app.use('/osc', oscRouter);
 
 // catch 404 and forward to error handler
@@ -35,7 +38,6 @@ app.use((req, res, next) => {
 
 // error handler
 app.use((err, req, res, next) => {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page
@@ -49,7 +51,7 @@ const client = new Client('127.0.0.1', osc_portnum);
 // for time stamp
 require('date-utils');
 
-// route:/
+// socketio settings
 io.on('connection', (socket) => {
   socket.on('message',function(msg){
     let dt = new Date();
@@ -57,8 +59,6 @@ io.on('connection', (socket) => {
     io.send(`${dt.toFormat("HH24:MI:SS")} : message received: ${msg}`);
   });
 });
-
-// route:/osc
 io.of('osc').on('connection', (socket) => {
   socket.on('message', (obj) => {
     console.log('osc: ' + obj);
@@ -73,6 +73,7 @@ http.listen(portnum, () => {
   console.log('server listening. Port:' + portnum);
 });
 
+// make ngrok tunnel
 (async () => {
   let url = await ngrok.connect(portnum);
   console.log('ngrok URL: ' + url);

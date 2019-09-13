@@ -7,12 +7,13 @@ gulp.task('scss', () => {
   gulp.src('./public/stylesheets/scss/style.scss').pipe(sass({
     outputStyle: 'expanded'
   }))
-  .pipe(gulp.dest('./public/stylesheets'));
+  .pipe(gulp.dest('./public/stylesheets/css'));
 });
 
 gulp.task('sass-watch', gulp.task('scss'), () => {
   let watcher = gulp.watch('./public/stylesheets/scss/*.scss', ['scss']);
   watcher.on('change', function (event) {
+    console.log("sass file changed");
   });
 });
 
