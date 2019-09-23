@@ -1,4 +1,19 @@
+$black: #606c76;
+$white: #fefefe;
+$main: #9b4dca;
+
+$vertical-margin: 20px;
+$side-margin: 30px;
+
 body {
-    padding: 20px 30px;
+    padding: $vertical-margin $side-margin;
 }
 
+form {
+    margin: 2.5rem auto;
+}
+
+ul#messages {
+    max-height: 300px;
+    overflow-y: scroll;
+}
