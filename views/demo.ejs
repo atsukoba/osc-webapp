@@ -2,29 +2,121 @@
 <html>
   <%- include('_head', {meta: {title: "osc app demo"}}) %>
   <body>
-    <h1>OSC app demo</h1>
-    <form id="osc_form" action="#">
-      <p>
-        <span>address:</span>
-        <input id="osc_address" autocomplete="off" placeholder="/address" required/>
-      </p>
-      <p>
-        <span>msg:</span>
-        <input id="osc_msg" autocomplete="off" placeholder="message value" required/>
-      </p>
-      <button type="submit">Send</button>
-    </form>
-    <hr>
-    <form id="message_form" action="#">
-      Message to Server
-      <input id="input_msg" autocomplete="off" required/>
-      <button type="submit">Send</button>
-    </form>
-    <hr>
-    <ul id="messages">
-      <h3>Messages</h3>
+    <h2>Tap Tiles!</h2>
+    <ul id="tiles">
+      <li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">foo</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">bar</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">hello!</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">1</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">2</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">3</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">4</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">5</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">wow!</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">on</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">off</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">get</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">start</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">stop</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">bye!</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">100</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">1000</span>
+          <span class="log"></span>
+        </div>
+      </li><li>
+        <div>
+          <span class="address">/address</span>
+          <span class="msg">-1</span>
+          <span class="log"></span>
+        </div>
+      </li>
     </ul>
+    <hr>
+    <a href="/">Back to home</a>
     <script src="/javascripts/main.js"></script>
-    <span>v0.01 Atsuya Kobayashi</span>
+    <script src="/javascripts/demo.js"></script>
   </body>
 </html>

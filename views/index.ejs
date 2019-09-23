@@ -3,7 +3,9 @@
   <%- include('_head', {meta: {title: "osc app"}}) %>
   <body>
     <h1>OSC app</h1>
+    <a href="/demo">go to controller demo</a>
     <form id="osc_form" action="#">
+      <h3>Send osc</h3>
       <p>
         <span>address:</span>
         <input id="osc_address" autocomplete="off" placeholder="/address" required/>
@@ -16,13 +18,13 @@
     </form>
     <hr>
     <form id="message_form" action="#">
-      Message to Server
+      <h3>Send message to server</h3>
       <input id="input_msg" autocomplete="off" required/>
       <button type="submit">Send</button>
     </form>
     <hr>
+    <h3>Messages</h3>
     <ul id="messages">
-      <h3>Messages</h3>
     </ul>
     <script src="/javascripts/main.js"></script>
     <span>v0.01 Atsuya Kobayashi</span>
