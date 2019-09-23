@@ -23,6 +23,8 @@ npm install
 npm start
 ```
 
+![start](https://i.gyazo.com/44da68d9ae9357df23a4476ae12fd504.gif)
+
 and share generated qr code/URL to participants
 
 or you may use `servo` to publish your local port to www
