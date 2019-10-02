@@ -5,7 +5,7 @@ var osc = io.connect('/osc');
 var oscSend = function(address, msg) {
   let obj = {};
   obj.address = address;
-  obj.args = [msg];
+  obj.args = msg;
   osc.emit("message", JSON.stringify(obj));
   console.log(`sent ${obj.args} on address: ${obj.address}`);
   return
