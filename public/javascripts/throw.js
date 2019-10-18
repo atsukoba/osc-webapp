@@ -13,6 +13,7 @@ class Bubble {
       [0, 0, 255]
     ];
     this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    document.getElementById("footer").style.borderColor = `rgb(${this.color.join()})`;
     document.getElementById("msg").style.color = `rgb(${this.color.join()})`;
     this.x = random(width);
     this.y = height - this.height;
@@ -45,7 +46,7 @@ class Bubble {
       this.y += this.vy;
     }
     // thrown
-    if (this.y < this.height - 1500) {
+    if (this.y < this.height - 1000) {
       this.destroy();
     }
     if (this.x < this.width / 2) {
@@ -68,7 +69,7 @@ class Bubble {
     for (let i = this.xArray.length - 1; i >= 0 ; i--) {
       let alpha = 255 * (i / this.xArray.length);
       stroke(...this.color, alpha);
-      fill(...this.color, 0);
+      fill(...this.color, 10);
       ellipse(this.xArray[i], this.yArray[i], this.width, this.height);
     }
   }
@@ -82,6 +83,7 @@ class Bubble {
 
   changeColor() {
     this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    document.getElementById("footer").style.borderColor
     document.getElementById("msg").style.color = `rgb(${this.color.join()})`;
   }
 
