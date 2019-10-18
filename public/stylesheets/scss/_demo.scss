@@ -14,21 +14,25 @@ body {
   width: 100vw;
   margin-top: $vertical-margin;
   margin-bottom: $vertical-margin;
-  margin-right:  -$side-margin;
-  margin-left:  -$side-margin;
+  margin-right: -$side-margin;
+  margin-left: -$side-margin;
+
   li {
     display: inline-flex;
     margin: 0;
     width: calc(100vw/3);
     height: calc(100vw/3);
     transition-duration: .5s;
+
     @include pc {
       width: 20vw;
-      height: calc(100vh / 4);  
+      height: calc(100vh / 4);
     }
+
     div {
       width: 100%;
       padding-top: calc(100vw/12);
+
       span {
         width: 100%;
         display: block;
@@ -36,24 +40,57 @@ body {
         text-align: center;
         text-shadow: 2px 2px 10px black;
       }
+
       span.address {
         font-size: 1.5rem;
+
         @include pc {
           font-size: 2.5rem;
         }
       }
+
       span.msg {
         font-size: 1.75rem;
+
         @include pc {
           font-size: 2.5rem;
         }
       }
+
       span.log {
         font-size: 1.25rem;
+
         @include pc {
           font-size: 1.5rem;
         }
       }
+    }
+  }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
+
+#throw-demo {
+  font-family: 'Major Mono Display', monospace;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  overscroll-behavior: none;
+
+  #canvas-wrapper {
+    height: calc(100vh - 60px);
+  }
+
+  footer {
+    height: 60px;
+    background-color: black;
+    border-top: solid white 0.5px;
+
+    p {
+      color: red;
+      text-align: center;
+      margin: 0 5px;
+      line-height: 60px;
     }
   }
 }

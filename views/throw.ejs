@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
   <%- include('_head', {meta: {title: "osc app: throw demo"}}) %>
-  <body style="height:calc(100vh - 100px);overflow:hidden;padding:0;overscroll-behavior: none;">
+  <body id="throw-demo">
     <script>
-      document.documentElement.requestFullscreen();
       window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
       window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+      document.body.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+      document.body.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+      try {
+        let rf = document.documentElement.requestFullscreen();
+      } catch (error) {
+        console.log(error);
+      }
     </script>
     <script src="/javascripts/p5.min.js"></script>
     <script src="/javascripts/main.js"></script>
     <script src="/javascripts/throw.js"></script>
+    <div id="canvas-wrapper"></div>
+    <footer>
+      <p id="msg">
+        Throw the bubble to screen!
+      </p>
+    </footer>
   </body>
 </html>
