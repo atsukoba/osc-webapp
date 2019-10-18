@@ -6,13 +6,14 @@ class Bubble {
     this.alive = true;
     this.width = 100;
     this.height = 100;
-    this.color = [255, 255, 255];
     this.colors = [
       [255, 255, 255],
-      [0, 255, 255],
-      [255, 0, 255],
-      [255, 255, 0]
+      [255, 0, 0],
+      [0, 255, 0],
+      [0, 0, 255]
     ];
+    this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    document.getElementById("msg").style.color = `rgb(${this.color.join()})`;
     this.x = random(width);
     this.y = height - this.height;
     this.vx = 0;
@@ -37,27 +38,27 @@ class Bubble {
 
     // free fall
     else {
-      this.vy += 1.25;
+      this.vy += 1.5;
       this.vx *= 0.99;
       this.vy *= 0.99;
       this.x += this.vx;
       this.y += this.vy;
     }
-    if (this.x < 0) {
-      this.vx *= -0.5;
-      this.x = 0;
-    }
-    if (this.x > width - this.width) {
-      this.vx *= -0.5;
-      this.x = width - this.width;
-    }
     // thrown
-    if (this.y < this.height - 1000) {
+    if (this.y < this.height - 1500) {
       this.destroy();
     }
-    if (this.y > height - this.height) {
+    if (this.x < this.width / 2) {
+      this.vx *= -0.5;
+      this.x = this.width / 2;
+    }
+    if (this.x > width - this.width / 2) {
+      this.vx *= -0.5;
+      this.x = width - this.width / 2;
+    }
+    if (this.y > height - this.height / 2) {
       this.vy *= -0.5;
-      this.y = height - this.height;
+      this.y = height - this.height / 2;
     }
   }
 
@@ -65,9 +66,9 @@ class Bubble {
     background(0);
     // drawing motion
     for (let i = this.xArray.length - 1; i >= 0 ; i--) {
-      let alpha = 255 - (40 * i);
+      let alpha = 255 * (i / this.xArray.length);
       stroke(...this.color, alpha);
-      fill(...this.color, alpha);
+      fill(...this.color, 0);
       ellipse(this.xArray[i], this.yArray[i], this.width, this.height);
     }
   }
@@ -80,9 +81,8 @@ class Bubble {
   }
 
   changeColor() {
-    let colorsFrom = this.colors
-    colorsFrom.splice(colorsFrom.indexOf(this.color), 1);
-    this.color = colorsFrom[Math.floor(Math.random() * colorsFrom.length)];
+    this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+    document.getElementById("msg").style.color = `rgb(${this.color.join()})`;
   }
 
   destroy() {
@@ -110,17 +110,21 @@ let pmouseXArray = [0, 0, 0, 0, 0, 0];
 let pmouseYArray = [0, 0, 0, 0, 0, 0];
 
 function setup() {
-  createCanvas(screen.width, screen.height - 100);
+  const canvas = createCanvas(screen.width, document.documentElement.clientHeight - 60);
+  canvas.parent("canvas-wrapper");
   strokeWeight(2);
+  setShakeThreshold(60);
   bubble = new Bubble();
 }
 
 function restoreBubble() {
-  oscSend("bubble", "sent");
+  oscSend("/bubble", []);
+  document.getElementById("msg").innerText = "Bubble Sent!!";
   console.log("Bubble Respawned!")
   setTimeout(() => {
     bubble = new Bubble();
-  }, 500);
+    document.getElementById("msg").innerText = "Throw the bubble to screen!";
+  }, 750);
 }
 
 function draw() {
@@ -130,7 +134,6 @@ function draw() {
     pmouseYArray.shift();
     pmouseYArray.push(pmouseY);
   }
-  checkForShake();
   bubble.draw();
 }
 
@@ -144,16 +147,6 @@ function mouseReleased() {
   bubble.vy += (mouseY - mean(pmouseYArray)) * .3;
 }
 
-function checkForShake() {
-  accChangeX = abs(accelerationX - pAccelerationX);
-  accChangeY = abs(accelerationY - pAccelerationY);
-  accChangeT = accChangeX + accChangeY;
-
-  if (accChangeT >= 20) {
-    bubble.changeColor();
-  }
-  else {
-    bubble.vx += accChangeX;
-    bubble.vy += accChangeY;
-  }
+function deviceShaken() {
+  bubble.changeColor();
 }
