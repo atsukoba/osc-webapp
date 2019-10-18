@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap");
 body {
   padding: 20px 30px;
 }
@@ -84,5 +85,30 @@ body {
   #tiles li div span.log {
     font-size: 1.5rem;
   }
+}
+
+#throw-demo {
+  font-family: 'Major Mono Display', monospace;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  overscroll-behavior: none;
+}
+
+#throw-demo #canvas-wrapper {
+  height: calc(100vh - 60px);
+}
+
+#throw-demo footer {
+  height: 60px;
+  background-color: black;
+  border-top: solid white 0.5px;
+}
+
+#throw-demo footer p {
+  color: red;
+  text-align: center;
+  margin: 0 5px;
+  line-height: 60px;
 }
 /*# sourceMappingURL=style.css.map */
