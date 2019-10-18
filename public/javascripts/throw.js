@@ -1,20 +1,24 @@
 // p5.js script
 // 重力で落下するエージェント（マウスで掴み、勢いをつけて投げられる）
 
+const colorCodes = {
+  "white": [255, 255, 255], 
+  "cyan": [0, 255, 255],
+  "magenta": [255, 0, 255],
+  "yellow": [255, 255, 0],
+  "red": [255, 0, 0],
+  "green": [0, 255, 0]
+};
+
 class Bubble {
   constructor() {
     this.alive = true;
     this.width = 100;
     this.height = 100;
-    this.colors = [
-      [255, 255, 255],
-      [255, 0, 0],
-      [0, 255, 0],
-      [0, 0, 255]
-    ];
+    this.colors = ["white", "cyan", "magenta", "yellow", "red", "green"];
     this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
-    document.getElementById("footer").style.borderColor = `rgb(${this.color.join()})`;
-    document.getElementById("msg").style.color = `rgb(${this.color.join()})`;
+    document.getElementById("footer").style.borderColor = `rgb(${colorCodes[this.color].join()})`;
+    document.getElementById("msg").style.color = `rgb(${colorCodes[this.color].join()})`;
     this.x = random(width);
     this.y = height - this.height;
     this.vx = 0;
@@ -68,8 +72,8 @@ class Bubble {
     // drawing motion
     for (let i = this.xArray.length - 1; i >= 0 ; i--) {
       let alpha = 255 * (i / this.xArray.length);
-      stroke(...this.color, alpha);
-      fill(...this.color, 10);
+      stroke(...colorCodes[this.color], alpha);
+      fill(...colorCodes[this.color], 10);
       ellipse(this.xArray[i], this.yArray[i], this.width, this.height);
     }
   }
@@ -120,7 +124,11 @@ function setup() {
 }
 
 function restoreBubble() {
-  oscSend("/bubble", []);
+  // send color and speed
+  oscSend("/bubble", [
+    bubble.color, 
+    bubble.yArray[0] - bubble.yArray[bubble.yArray.length - 2]]);
+
   document.getElementById("msg").innerText = "Bubble Sent!!";
   console.log("Bubble Respawned!")
   setTimeout(() => {

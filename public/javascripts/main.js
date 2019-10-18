@@ -7,7 +7,8 @@ var oscSend = function(address, msg) {
   obj.address = address;
   obj.args = msg;
   osc.emit("message", JSON.stringify(obj));
-  console.log(`sent ${obj.args} on address: ${obj.address}`);
+  console.log(`sent: on address: ${obj.address}`);
+  console.dir(obj);
   return
 }
 
