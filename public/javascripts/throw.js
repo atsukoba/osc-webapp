@@ -134,7 +134,7 @@ function restoreBubble() {
   setTimeout(() => {
     bubble = new Bubble();
     document.getElementById("msg").innerText = "Throw the bubble to screen!";
-  }, 750);
+  }, 250);
 }
 
 function draw() {
