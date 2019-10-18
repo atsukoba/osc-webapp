@@ -71,23 +71,24 @@ body {
 @import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
 
 #throw-demo {
+  font-size: 0;
   font-family: 'Major Mono Display', monospace;
-  height: 100vh;
   overflow: hidden;
   padding: 0;
   overscroll-behavior: none;
 
   #canvas-wrapper {
-    height: calc(100vh - 60px);
+    height: auto;
   }
 
-  footer {
+  #footer {
     height: 60px;
     background-color: black;
     border-top: solid white 0.5px;
 
     p {
       color: red;
+      font-size: 1.5rem;
       text-align: center;
       margin: 0 5px;
       line-height: 60px;
