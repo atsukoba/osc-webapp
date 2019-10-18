@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const createError = require('http-errors');
 const express = require('express');
 const ngrok = require('ngrok');
@@ -29,7 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routing
 app.use('/', indexRouter);
-app.use('/demo', indexRouter);
+app.use('/tiles', indexRouter);
+app.use('/throw', indexRouter);
 app.use('/osc', oscRouter);
 
 // catch 404 and forward to error handler
@@ -38,7 +40,7 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page

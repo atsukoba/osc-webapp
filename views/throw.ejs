@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <%- include('_head', {meta: {title: "osc app: throw demo"}}) %>
+  <body style="height:calc(100vh - 100px);overflow:hidden;padding:0;overscroll-behavior: none;">
+    <script>
+      document.documentElement.requestFullscreen();
+      window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+      window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+    </script>
+    <script src="/javascripts/p5.min.js"></script>
+    <script src="/javascripts/main.js"></script>
+    <script src="/javascripts/throw.js"></script>
+  </body>
+</html>
