@@ -3,12 +3,8 @@
     @content;
   }
 }
-
-body {
-  background-color: $white;
-}
-
 #tiles {
+  background-color: $white;
   list-style: none;
   font-size: 0;
   width: 100vw;
@@ -71,14 +67,28 @@ body {
 @import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
 
 #throw-demo {
+  background-color: black;
   font-size: 0;
   font-family: 'Major Mono Display', monospace;
   overflow: hidden;
   padding: 0;
   overscroll-behavior: none;
+  position: relative;
 
   #canvas-wrapper {
     height: auto;
+  }
+
+  #fullscreen {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: block;
+    height: 30px;
+    width: 20px;
+    border-style: dashed;
+    opacity: .5;
+    z-index: 999;
   }
 
   #footer {

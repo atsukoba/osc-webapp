@@ -12,11 +12,8 @@ ul#messages {
   overflow-y: scroll;
 }
 
-body {
-  background-color: #fefefe;
-}
-
 #tiles {
+  background-color: #fefefe;
   list-style: none;
   font-size: 0;
   width: 100vw;
@@ -88,15 +85,29 @@ body {
 }
 
 #throw-demo {
+  background-color: black;
   font-size: 0;
   font-family: 'Major Mono Display', monospace;
   overflow: hidden;
   padding: 0;
   overscroll-behavior: none;
+  position: relative;
 }
 
 #throw-demo #canvas-wrapper {
   height: auto;
+}
+
+#throw-demo #fullscreen {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: block;
+  height: 30px;
+  width: 20px;
+  border-style: dashed;
+  opacity: .5;
+  z-index: 999;
 }
 
 #throw-demo #footer {

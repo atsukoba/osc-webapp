@@ -111,18 +111,6 @@ const mean = (arr, fn) => {
   return sum(arr, fn) / arr.length;
 };
 
-let bubble;
-let pmouseXArray = [0, 0, 0, 0, 0, 0];
-let pmouseYArray = [0, 0, 0, 0, 0, 0];
-
-function setup() {
-  const canvas = createCanvas(screen.width, document.documentElement.clientHeight - 60);
-  canvas.parent("canvas-wrapper");
-  strokeWeight(2);
-  setShakeThreshold(60);
-  bubble = new Bubble();
-}
-
 function restoreBubble() {
   // send color and speed
   oscSend("/bubble", [
@@ -137,16 +125,6 @@ function restoreBubble() {
   }, 250);
 }
 
-function draw() {
-  if (mouseIsPressed) {
-    pmouseXArray.shift();
-    pmouseXArray.push(pmouseX);
-    pmouseYArray.shift();
-    pmouseYArray.push(pmouseY);
-  }
-  bubble.draw();
-}
-
 function mousePressed() {
   bubble.vx = 0;
   bubble.vy = 0;
@@ -155,8 +133,38 @@ function mousePressed() {
 function mouseReleased() {
   bubble.vx += (mouseX - mean(pmouseXArray)) * .3;
   bubble.vy += (mouseY - mean(pmouseYArray)) * .3;
+  console.log(mouseX);
+  console.log(mouseY);
+  // fullscreen switching button
+  if ((mouseX > width - 35) && (mouseY < 45) ) {
+    document.documentElement.requestFullscreen();
+    setup();
+  }
 }
 
 function deviceShaken() {
   bubble.changeColor();
+}
+
+let canvas;
+let bubble;
+let pmouseXArray = [0, 0, 0, 0, 0, 0];
+let pmouseYArray = [0, 0, 0, 0, 0, 0];
+
+function setup() {
+  canvas = createCanvas(screen.width, document.documentElement.clientHeight - 60);
+  canvas.parent("canvas-wrapper");
+  strokeWeight(2);
+  setShakeThreshold(60);
+  bubble = new Bubble();
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    pmouseXArray.shift();
+    pmouseXArray.push(pmouseX);
+    pmouseYArray.shift();
+    pmouseYArray.push(pmouseY);
+  }
+  bubble.draw();
 }

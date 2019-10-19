@@ -7,16 +7,12 @@
       window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
       document.body.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
       document.body.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
-      try {
-        let rf = document.documentElement.requestFullscreen();
-      } catch (error) {
-        console.log(error);
-      }
     </script>
     <script src="/javascripts/p5.min.js"></script>
     <script src="/javascripts/main.js"></script>
     <script src="/javascripts/throw.js"></script>
     <div id="canvas-wrapper"></div>
+    <span id="fullscreen" onclick="document.documentElement.requestFullscreen()"></span>
     <footer id="footer">
       <p id="msg">
         Throw the bubble to screen!
