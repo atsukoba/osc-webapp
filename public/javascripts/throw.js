@@ -50,19 +50,25 @@ class Bubble {
       this.y += this.vy;
     }
     // thrown
+    let speed = Math.abs(this.yArray[0] - this.yArray[this.yArray.length - 2]);
     if (this.y < this.height - 1000) {
       this.destroy();
     }
     if (this.x < this.width / 2) {
-      this.vx *= -0.5;
+      oscSend(`/${this.color}`, speed);
+      this.vx *= -0.75;
       this.x = this.width / 2;
     }
     if (this.x > width - this.width / 2) {
-      this.vx *= -0.5;
+      oscSend(`/${this.color}`, speed);
+      this.vx *= -0.75;
       this.x = width - this.width / 2;
     }
     if (this.y > height - this.height / 2) {
-      this.vy *= -0.5;
+      if (speed > 0) {
+        oscSend(`/${this.color}`, speed);
+      }
+      this.vy *= -0.75;
       this.y = height - this.height / 2;
     }
   }
@@ -112,11 +118,6 @@ const mean = (arr, fn) => {
 };
 
 function restoreBubble() {
-  // send color and speed
-  oscSend("/bubble", [
-    bubble.color, 
-    bubble.yArray[0] - bubble.yArray[bubble.yArray.length - 2]]);
-
   document.getElementById("msg").innerText = "Bubble Sent!!";
   console.log("Bubble Respawned!")
   setTimeout(() => {
