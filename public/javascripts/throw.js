@@ -93,8 +93,8 @@ class Bubble {
 
   changeColor() {
     this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
-    document.getElementById("footer").style.borderColor
-    document.getElementById("msg").style.color = `rgb(${this.color.join()})`;
+    document.getElementById("footer").style.borderColor = `rgb(${colorCodes[this.color].join()})`;
+    document.getElementById("msg").style.color = `rgb(${colorCodes[this.color].join()})`;
   }
 
   destroy() {
@@ -113,6 +113,7 @@ const sum = (arr, fn) => {
     });
   }
 };
+
 const mean = (arr, fn) => {
   return sum(arr, fn) / arr.length;
 };
