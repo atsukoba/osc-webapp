@@ -4,7 +4,7 @@ serve osc from www: simple web OSC controller
 
 ## demo : Tiles
 
-![screenshot](https://i.gyazo.com/d03c2b3f1fdfebd8911ebf6ea8a0475d.png)
+![screenshot animation](https://i.gyazo.com/6743bcefe33625d949fd7f1b9ced35a6.gif)
 
 sending osc message by tapping tiles
 

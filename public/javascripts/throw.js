@@ -13,8 +13,8 @@ const colorCodes = {
 class Bubble {
   constructor() {
     this.alive = true;
-    this.width = 100;
-    this.height = 100;
+    this.width = 40 + random(80);
+    this.height = this.width;
     this.colors = ["white", "cyan", "magenta", "yellow", "red", "green"];
     this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
     document.getElementById("footer").style.borderColor = `rgb(${colorCodes[this.color].join()})`;
