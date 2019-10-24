@@ -41,6 +41,14 @@ or you may use `servo` to publish your local port to www
 ssh -R 80:localhost:7000 serveo.net
 ```
 
+### config
+
+changing QR code URL (append them to URL)
+
+- messaging : `"mode": "/"`
+- Demo Tiles : `"mode": "/tiles"`
+- Demo Throwing : `"mode": "/throw"`
+
 ## dev
 
 fork this repo and use `demo.ejs` as html template.

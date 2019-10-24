@@ -91,7 +91,7 @@ for (let k in interfaces) {
 }
 console.log(`local ip addresses: ${addresses}`);
 console.log(`FOR LOCAL NEWORK PARTICIPANTS`);
-qrcode.toString(`http://${addresses[0]}:${portnum}`, {type: 'terminal'}, (err, str) => {
+qrcode.toString(`http://${addresses[0]}:${portnum}${conf.mode}`, {type: 'terminal'}, (err, str) => {
   console.log(str);
 });
 
@@ -99,6 +99,7 @@ qrcode.toString(`http://${addresses[0]}:${portnum}`, {type: 'terminal'}, (err, s
 console.log(`FOR WWW PARTICIPANTS`);
 (async () => {
   let url = await ngrok.connect(portnum);
+  url += conf.mode;
   console.log('ngrok URL: ' + url);
   qrcode.toString(url, {type: 'terminal'}, (err, str) => {
     console.log(str);
