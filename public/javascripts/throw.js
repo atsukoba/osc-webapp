@@ -51,7 +51,7 @@ class Bubble {
     }
     // thrown
     let speed = Math.abs(this.yArray[0] - this.yArray[this.yArray.length - 2]);
-    if (this.y < this.height - 1000) {
+    if (this.y < -500) {
       this.destroy();
     }
     if (this.x < this.width / 2) {
@@ -123,7 +123,7 @@ function restoreBubble() {
   console.log("Bubble Respawned!")
   setTimeout(() => {
     bubble = new Bubble();
-    document.getElementById("msg").innerText = "Throw the bubble to screen!";
+    document.getElementById("msg").innerText = "Flick the bubble!";
   }, 250);
 }
 
@@ -146,6 +146,8 @@ function mouseReleased() {
 
 function deviceShaken() {
   bubble.changeColor();
+  bubble.vx = random(300);
+  bubble.vy = random(100);
 }
 
 let canvas;
