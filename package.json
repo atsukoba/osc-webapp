@@ -20,7 +20,7 @@
     "ngrok": "^3.2.5",
     "node-osc": "^4.1.1",
     "qrcode": "^1.4.1",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.5.0"
   },
   "devDependencies": {
     "eslint": "^6.3.0",
