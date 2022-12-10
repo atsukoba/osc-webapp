@@ -11,7 +11,7 @@
     "date-utils": "^1.2.21",
     "debug": "~2.6.9",
     "ejs": "^2.7.1",
-    "express": "~4.16.1",
+    "express": "~4.17.3",
     "gulp": "^4.0.2",
     "gulp-express": "^0.3.5",
     "gulp-sass": "^4.0.2",
